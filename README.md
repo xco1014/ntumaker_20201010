@@ -2,7 +2,7 @@
 
 Add `./src/config.json` with this ewhich  following properties:
 subscribe donataion event
-|property|type|usage|
+|Variable|Type|Description|
 |---|---|---|
 |SOCKET_API_TOKEN|string|[Token to streamlabs](https://streamlabs.com/dashboard/#/settings/api-settings), which is used to subscribe donataion event|
 |Verbose|boolean|Whether to show verbose log|
