@@ -1,5 +1,5 @@
 from time import sleep
 
 print('start sleep')
-sleep(5)
+sleep(10)
 print('awake')

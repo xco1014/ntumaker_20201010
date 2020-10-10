@@ -1,3 +1,4 @@
+const CONFIG = require('./config.json');
 const path = require('path');
 const { spawn } = require('child_process');
 const { log, debug, error } = require('./logging')('python');
@@ -7,7 +8,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       const filePath = path.join(__dirname, '..', 'scripts', fileName);
       debug(`running '${fileName}'`);
-      const process = spawn('python', [filePath, ...args]);
+      const process = spawn(CONFIG.pythonCmd, [filePath, ...args]);
 
       process.on('exit', function () {
         debug('Done.');
