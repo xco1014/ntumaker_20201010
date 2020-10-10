@@ -1,6 +1,7 @@
 const CONFIG = require('./config.json');
 const path = require('path');
 const fs = require('fs');
+const { spawn } = require('child_process');
 const io = require('socket.io-client');
 
 const log = function (...args) {
@@ -12,7 +13,7 @@ const streamlabs = io(`https://sockets.streamlabs.com?token=${CONFIG.SOCKET_API_
 const logFolderPath = path.resolve('./logs');
 const logFilePath = path.join(logFolderPath, `${Date.now()}.log`)
 
-log(`Logging to ${logFilePath}`);
+log(`Logging to "${logFilePath}"`);
 
 //Perform Action on event
 streamlabs.on('event', (eventData) => {
@@ -23,6 +24,8 @@ streamlabs.on('event', (eventData) => {
   }
 
   fs.appendFileSync(logFilePath, `${JSON.stringify(eventData)}\n`, { flag: 'a+' });
+
+  // spawn('python3', ['./scripts/']);
 
   // if (!eventData.for && eventData.type === 'donation') {
   //   //code to handle donation events
