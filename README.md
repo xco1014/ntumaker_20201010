@@ -1,7 +1,7 @@
 # ntumaker_20201010
 
-Add `./src/config.json` with this ewhich  following properties:
-subscribe donataion event
+Add `./src/config.json` with the following properties:
+
 |Variable|Type|Description|
 |---|---|---|
 |SOCKET_API_TOKEN|string|[Token to streamlabs](https://streamlabs.com/dashboard/#/settings/api-settings), which is used to subscribe donataion event|
