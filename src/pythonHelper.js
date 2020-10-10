@@ -8,7 +8,8 @@ module.exports = {
     return new Promise((resolve, reject) => {
       const filePath = path.join(__dirname, '..', 'scripts', fileName);
       debug(`running '${fileName}'`);
-      const process = spawn(CONFIG.pythonCmd, [filePath, ...args]);
+      const [cmd, ...cmdArgs] = CONFIG.pythonCmd.split(' ')
+      const process = spawn(cmd, [...cmdArgs, filePath, ...args]);
 
       process.on('exit', function () {
         debug('Done.');
@@ -16,7 +17,6 @@ module.exports = {
       });
 
       process.on('error', function (err) {
-        error(err);
         reject(err);
       });
     })
