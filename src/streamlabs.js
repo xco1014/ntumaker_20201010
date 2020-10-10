@@ -11,7 +11,7 @@ function subscribe() {
   const streamlabs = io(`https://sockets.streamlabs.com?token=${SOCKET_API_TOKEN}`, { transports: ['websocket'] });
   log(`subscribed to streamlabs`);
 
-  const logFolderPath = path.resolve('..', 'logs');
+  const logFolderPath = path.resolve('logs');
   const logFilePath = path.join(logFolderPath, `${Date.now()}.log`);
   log(`Logging events to '${logFilePath}'`);
 
