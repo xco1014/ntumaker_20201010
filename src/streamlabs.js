@@ -20,8 +20,6 @@ function subscribe() {
   streamlabs.on('event', async (e) => {
     try {
       log(`Event received`, e);
-      const cntId = subscribeCount;
-      subscribeCount++;
 
       if (!fs.existsSync(logFolderPath)) {
         fs.mkdirSync(logFolderPath);
@@ -41,12 +39,13 @@ function subscribe() {
       error('Error executing cb.', err);
     }
   });
+
+  async function doWatering(amount) {
+    await taskQueue.enqueue(async () => {
+      await runPython('main.py', amount);
+    });
+  }
 }
 
-async function doWatering(amount) {
-  await taskQueue.enqueue(async () => {
-    await runPython('sleep.py', amount);
-  });
-}
 
 module.exports = subscribe
