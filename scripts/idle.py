@@ -12,7 +12,7 @@ num_pixels = 16
 ORDER = neopixel.GRB
 
 pixels = neopixel.NeoPixel(
-    pixel_pin, num_pixels, brightness=0.8, auto_write=False, pixel_order=ORDER
+    pixel_pin, num_pixels, brightness=0.3, auto_write=False, pixel_order=ORDER
 )
 
 
@@ -65,11 +65,11 @@ rota = 45
 
 
 def idle():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(CONTROL_PIN_4, GPIO.OUT)
     while True:
         print('start idle mode')
         rainbow_cycle(0.002)
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(CONTROL_PIN_4, GPIO.OUT)
         dc4 = angle_to_duty_cycle(rota)
         pwm4 = GPIO.PWM(CONTROL_PIN_4, PWM_FREQ)
         pwm4.start(0)
@@ -83,9 +83,10 @@ def idle():
         pixels.show()
 
         pwm4.stop()
-        GPIO.cleanup()
 
         time.sleep(5)
+
+    GPIO.cleanup()
 
 
 def angle_to_duty_cycle(angle=0):
