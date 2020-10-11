@@ -58,17 +58,10 @@ CONTROL_PIN_4 = 23
 PWM_FREQ = 50
 
 sprayStop = 0
-<< << << < HEAD
-sprayAct = 180
-ferStop = 0
-ferAct = 90
-fer2Stop = 0
-== == == =
 sprayAct = 180
 ferStop = 135
 ferAct = 35
 fer2Stop = 180
->>>>>> > 959a47564d715a19f66cfb2d66972f497d86adec
 fer2Act = 90
 rota = 45
 print(amount)
@@ -213,12 +206,9 @@ finally:
     pixels.fill((0, 0, 0))
     pixels.show()
 
-<< << << < HEAD
 try:
     chage(amount)
 finally:
     GPIO.cleanup()
     pixels.fill((0, 0, 0))
     pixels.show()
-== == == =
->>>>>> > 959a47564d715a19f66cfb2d66972f497d86adec
