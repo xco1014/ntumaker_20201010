@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+	"bg": "pm2 start -n ntu-maker src/index.js"
   },
   "author": "",
   "license": "ISC",
