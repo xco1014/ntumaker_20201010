@@ -65,7 +65,7 @@ rota = 45
 
 
 def idle():
-    while true:
+    while True:
         print('start idle mode')
         rainbow_cycle(0.002)
         GPIO.setmode(GPIO.BCM)
