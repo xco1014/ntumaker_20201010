@@ -74,6 +74,7 @@ def idle():
         pwm4 = GPIO.PWM(CONTROL_PIN_4, PWM_FREQ)
         pwm4.start(0)
         pwm4.ChangeDutyCycle(dc4)
+        time.sleep(3)
 
         for i in range(3):
             rainbow_cycle(0.002)
