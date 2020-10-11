@@ -27,6 +27,10 @@ function subscribe() {
 
       fs.appendFileSync(logFilePath, `${JSON.stringify(e)}\n`, { flag: 'a+' });
 
+      if (e.type === 'follow' && e.for === 'twitch_account') {
+        await doRotate();
+      }
+
       if (e.type === 'bits' && e.for === 'twitch_account') {
         await doWatering(e.message[0].amount);
       }
@@ -43,6 +47,12 @@ function subscribe() {
   async function doWatering(amount) {
     await taskQueue.enqueue(async () => {
       await runPython('main.py', amount);
+    });
+  }
+
+  async function doRotate() {
+    await taskQueue.enqueue(async () => {
+      await runPython('follow.py');
     });
   }
 }
