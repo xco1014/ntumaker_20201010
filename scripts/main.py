@@ -58,7 +58,7 @@ CONTROL_PIN_4 = 23
 PWM_FREQ = 50
 
 sprayStop = 0
-sprayAct = 180
+sprayAct = 230
 ferStop = 135
 ferAct = 35
 fer2Stop = 180
