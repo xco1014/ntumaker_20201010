@@ -74,7 +74,7 @@ def idle():
     pwm4.ChangeDutyCycle(dc4)
     time.sleep(3)
 
-    for i in range(20):
+    for i in range(10):
         rainbow_cycle(0.002)
         time.sleep(2)
 
