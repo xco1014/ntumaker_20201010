@@ -65,25 +65,26 @@ rota = 45
 
 
 def idle():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(CONTROL_PIN_4, GPIO.OUT)
+    pwm4 = GPIO.PWM(CONTROL_PIN_4, PWM_FREQ)
     while True:
         print('start idle mode')
         rainbow_cycle(0.002)
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(CONTROL_PIN_4, GPIO.OUT)
-        pwm4 = GPIO.PWM(CONTROL_PIN_4, PWM_FREQ)
-        pwm4.start(0)
         dc4 = angle_to_duty_cycle(rota)
+        pwm4.start(0)
         pwm4.ChangeDutyCycle(dc4)
 
         for i in range(5):
             rainbow_cycle(0.002)
+            time.sleep(3)
 
         pixels.fill((0, 0, 0))
         pixels.show()
 
-        time.sleep(1)
         pwm4.stop()
-        GPIO.cleanup()
+
+        time.sleep(1)
 
 
 def angle_to_duty_cycle(angle=0):
