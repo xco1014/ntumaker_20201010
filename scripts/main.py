@@ -12,7 +12,7 @@ num_pixels = 16
 ORDER = neopixel.GRB
 
 pixels = neopixel.NeoPixel(
-    pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
+    pixel_pin, num_pixels, brightness=0.8, auto_write=False, pixel_order=ORDER
 )
 
 
@@ -58,24 +58,34 @@ CONTROL_PIN_4 = 23
 PWM_FREQ = 50
 
 sprayStop = 0
+<< << << < HEAD
 sprayAct = 180
 ferStop = 0
 ferAct = 90
 fer2Stop = 0
+== == == =
+sprayAct = 180
+ferStop = 135
+ferAct = 35
+fer2Stop = 180
+>>>>>> > 959a47564d715a19f66cfb2d66972f497d86adec
 fer2Act = 90
 rota = 45
 print(amount)
 
 
-def chage(x):
+def change(x):
+    if x == -1:
+        spray(4)
+        return
     if x >= 0 and x < 10:
-        spray(1)
+        spray(3)
         return
     elif x >= 10 and x < 50:
-        spray(2)
+        spray(5)
         return
     elif x >= 50 and x < 100:
-        fertiliz(2)
+        fertiliz(1)
         return
     elif x >= 100:
         ultimate()
@@ -102,10 +112,13 @@ def ultimate():
     pwm4.ChangeDutyCycle(dc4)
     time.sleep(2)
 
-    dc = angle_to_duty_cycle(sprayStop)
-    pwm1.ChangeDutyCycle(dc)
     dc2 = angle_to_duty_cycle(ferStop)
     pwm2.ChangeDutyCycle(dc2)
+
+    time.sleep(2)
+
+    dc = angle_to_duty_cycle(sprayStop)
+    pwm1.ChangeDutyCycle(dc)
 
     pixels.fill((0, 0, 0))
     pixels.show()
@@ -160,7 +173,7 @@ def fertiliz(t):
     dc = angle_to_duty_cycle_9g(fer2Stop)
     pwm.ChangeDutyCycle(dc)
 
-    time.sleep(1)
+    time.sleep(2)
     pwm.stop()
     GPIO.cleanup()
 
@@ -194,8 +207,18 @@ def spray(t):
 
 
 try:
+    change(amount)
+finally:
+    GPIO.cleanup()
+    pixels.fill((0, 0, 0))
+    pixels.show()
+
+<< << << < HEAD
+try:
     chage(amount)
 finally:
     GPIO.cleanup()
     pixels.fill((0, 0, 0))
     pixels.show()
+== == == =
+>>>>>> > 959a47564d715a19f66cfb2d66972f497d86adec

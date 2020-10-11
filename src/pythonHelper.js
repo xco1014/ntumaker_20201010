@@ -9,6 +9,7 @@ module.exports = {
       const filePath = path.join(__dirname, '..', 'scripts', fileName);
       debug(`running '${fileName}'`);
       const [cmd, ...cmdArgs] = CONFIG.pythonCmd.split(' ')
+	  debug(`running cmd ${cmd} ${[...cmdArgs, filePath, ...args].join(' ')}`)
       const process = spawn(cmd, [...cmdArgs, filePath, ...args]);
 
       process.on('exit', function () {
