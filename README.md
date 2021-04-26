@@ -1,18 +1,21 @@
 # ntumaker_20201010
 
-Add `./src/config.json` with the following properties:
+### 組別:36 吃飽睡睡飽吃
 
-|Variable|Type|Description|
-|---|---|---|
-|SOCKET_API_TOKEN|string|[Token to streamlabs](https://streamlabs.com/dashboard/#/settings/api-settings), which is used to subscribe donataion event|
-|Verbose|boolean|Whether to show verbose log|
-|pythonCmd|string|Command of python 3.x, usually are "python" or "python3"|
+### Description
+我們希望透過這個作品喚起人們的環保意識，在都市化的社會裡，透過與植物互動的方式拉近人與自然的距離。
 
-* example:
-```json
-{
-  "SOCKET_API_TOKEN": "YOUR_SOCKET_API_TOKEN",
-  "Verbose":false,
-  "pythonCmd": "python"
-}
-```
+### Usage
+以直播方式在TWITCH平台展示，當有人捐款或追蹤就會有不同的效果展示，根據金額大小，分別有以下功能。
+
+| 捐款金額(美元) | 功能                                 |
+|----------------|--------------------------------------|
+| 0~10           | 澆水3秒                              |
+| 10~50          | 澆水5秒                              |
+| 50~100         | 施肥2秒                              |
+| >100           | 澆水5秒+施肥2秒+LED燈光效果+動態展示 |
+| 追蹤           | LED燈光效果動態展示                  |
+
+### Demo
+demo video : https://youtu.be/Bew1OK0UmO8 
+
